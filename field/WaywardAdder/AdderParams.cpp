@@ -20,7 +20,7 @@ void AdderParams::Init(int CVId)
 
 void AdderParams::NotifySelected(daisy::DaisyField &hw)
 {
-	LastKnobVal = hw.GetCvValue(CVId);
+	LastKnobVal = hw.GetKnobValue(CVId);
 	_waitForLatch = true;
 }
 
@@ -32,9 +32,14 @@ void AdderParams::ReadCVInput(daisy::DaisyField &hw)
 void AdderParams::ProcessKnobInput(daisy::DaisyField &hw)
 {
 	float newKnobVal = hw.GetKnobValue(CVId);
-	if (!_waitForLatch || (abs(newKnobVal - LastKnobVal) > 0.01f))
+	float delta = newKnobVal - LastKnobVal;
+	if (_waitForLatch && (abs(delta) > 0.1f))
 	{
 		_waitForLatch = false;
+	}
+
+	if (!_waitForLatch)
+	{
 		KnobVal = newKnobVal;
 		LastKnobVal = newKnobVal;
 	}

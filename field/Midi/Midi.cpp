@@ -223,11 +223,11 @@ int main(void)
     hw.StartAudio(AudioCallback);
     for(;;)
     {
-        hw.midi.Listen();
-        // Handle MIDI Events
-        while(hw.midi.HasEvents())
-        {
-            HandleMidiMessage(hw.midi.PopEvent());
-        }
+	    hw.midi.Listen();
+	    // Handle MIDI Events
+	    while(hw.midi.HasEvents())
+	    {
+		    HandleMidiMessage(hw.midi.PopEvent());
+	    }
     }
 }
