@@ -18,6 +18,8 @@ public:
 	int SemitoneAdd;
 	float SemitoneRange;
 	bool _waitForLatch;
+	float SlewAmtNorm;
+	float GateProbNorm;
 public:
 	void Init(int CVId);
 	void NotifySelected(daisy::DaisyField &hw);

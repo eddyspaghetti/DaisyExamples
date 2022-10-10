@@ -2,7 +2,7 @@
 TARGET = WaywardAdder
 
 # Sources
-CPP_SOURCES = AdderStepParams.cpp AdderParams.cpp WaywardAdder.cpp
+CPP_SOURCES = AdderStepParams.cpp AdderParams.cpp AdderDisplay.cpp WaywardAdder.cpp
 
 # Library Locations
 LIBDAISY_DIR = ../../libDaisy

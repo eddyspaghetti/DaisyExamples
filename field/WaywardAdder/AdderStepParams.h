@@ -10,10 +10,13 @@
 class AdderStepParams
 {
 public:
-	AdderParams CV0Params;
-	AdderParams CV1Params;
+	int StepId = 0;
+	AdderParams CVParamsA;
+	AdderParams CVParamsB;
 public:
 	explicit AdderStepParams();
+
+	void Init(int stepId);
 
 	void NotifySelectedStep(daisy::DaisyField &hw);
 

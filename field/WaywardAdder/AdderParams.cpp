@@ -15,6 +15,7 @@ void AdderParams::Init(int CVId)
 	CVInNorm = 0.0f;
 	CVOutNorm = 0.0f;
 	SemitoneRange = 24.0f;
+	SlewAmtNorm = 0.0f;
 	_waitForLatch = false;
 }
 

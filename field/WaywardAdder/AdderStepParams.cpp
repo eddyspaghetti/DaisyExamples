@@ -6,9 +6,16 @@
 
 AdderStepParams::AdderStepParams()
 {
-	CV0Params.Init(0);
-	CV1Params.Init(1);
+	StepId = 0;
+	CVParamsA.Init(0);
+	CVParamsB.Init(1);
 }
+
+void AdderStepParams::Init(int stepId)
+{
+	StepId = stepId;
+}
+
 
 void AdderStepParams::NotifySelectedStep(daisy::DaisyField &hw)
 {
@@ -16,31 +23,31 @@ void AdderStepParams::NotifySelectedStep(daisy::DaisyField &hw)
 
 	// Lock in the current knob values, so we only update our semitones if the knob value changes
 	// beyond a semitone worth of knob amount.
-	CV0Params.NotifySelected(hw);
-	CV1Params.NotifySelected( hw);
+	CVParamsA.NotifySelected(hw);
+	CVParamsB.NotifySelected(hw);
 }
 
 
 void AdderStepParams::ProcessStepControls(daisy::DaisyField &hw)
 {
-	CV0Params.ProcessKnobInput(hw);
-	CV1Params.ProcessKnobInput(hw);
+	CVParamsA.ProcessKnobInput(hw);
+	CVParamsB.ProcessKnobInput(hw);
 }
 
 void AdderStepParams::ReadCVInput(daisy::DaisyField &hw)
 {
-	CV0Params.ReadCVInput(hw);
-	CV1Params.ReadCVInput(hw);
+	CVParamsA.ReadCVInput(hw);
+	CVParamsB.ReadCVInput(hw);
 }
 
 void AdderStepParams::CalcVoltageAdd()
 {
-	CV0Params.CalcVoltageAdd();
-	CV1Params.CalcVoltageAdd();
+	CVParamsA.CalcVoltageAdd();
+	CVParamsB.CalcVoltageAdd();
 }
 
 void AdderStepParams::SendCVOut(daisy::DaisyField &hw)
 {
-	hw.SetCvOut1((int)(CV0Params.CVOutNorm * 4095.0f));
-	hw.SetCvOut2((int)(CV1Params.CVOutNorm * 4095.0f));
+	hw.SetCvOut1((int)(CVParamsA.CVOutNorm * 4095.0f));
+	hw.SetCvOut2((int)(CVParamsB.CVOutNorm * 4095.0f));
 }

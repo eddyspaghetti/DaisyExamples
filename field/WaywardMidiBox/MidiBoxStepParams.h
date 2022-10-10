@@ -10,6 +10,7 @@
 class AdderStepParams
 {
 public:
+	int StepId = 0;
 	AdderParams CV0Params;
 	AdderParams CV1Params;
 public:
